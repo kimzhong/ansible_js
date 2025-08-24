@@ -6,7 +6,7 @@ const { validatePlaybook } = require('../services/ansible.service');
 exports.createPlaybook = async (req, res, next) => {
   try {
     const { name, description, content, variables } = req.body;
-    
+
     // Validate playbook content
     const validationResult = await validatePlaybook(content);
     if (!validationResult.valid) {
@@ -27,7 +27,7 @@ exports.createPlaybook = async (req, res, next) => {
 
     const savedPlaybook = await playbook.save();
     logger.info(`New playbook created: ${savedPlaybook._id}`);
-    
+
     res.status(201).json(savedPlaybook);
   } catch (error) {
     next(error);
@@ -38,14 +38,14 @@ exports.createPlaybook = async (req, res, next) => {
 exports.getPlaybooks = async (req, res, next) => {
   try {
     const { page = 1, limit = 10 } = req.query;
-    
+
     const playbooks = await Playbook.find()
       .limit(limit * 1)
       .skip((page - 1) * limit)
       .exec();
 
     const count = await Playbook.countDocuments();
-    
+
     res.json({
       playbooks,
       totalPages: Math.ceil(count / limit),
@@ -77,7 +77,7 @@ exports.getPlaybook = async (req, res, next) => {
 exports.updatePlaybook = async (req, res, next) => {
   try {
     const { name, description, content, variables } = req.body;
-    
+
     if (content) {
       // Validate new content
       const validationResult = await validatePlaybook(content);
@@ -116,7 +116,7 @@ exports.updatePlaybook = async (req, res, next) => {
 exports.deletePlaybook = async (req, res, next) => {
   try {
     const playbook = await Playbook.findByIdAndDelete(req.params.id);
-    
+
     if (!playbook) {
       return res.status(404).json({
         error: {
