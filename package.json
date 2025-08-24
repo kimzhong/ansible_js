@@ -1,0 +1,34 @@
+{
+    "name": "ansible-playbook-generator",
+    "version": "1.0.0",
+    "description": "A platform for generating, validating and testing Ansible playbooks",
+    "main": "src/index.js",
+    "scripts": {
+        "start": "node src/index.js",
+        "dev": "nodemon src/index.js",
+        "test": "jest",
+        "lint": "eslint src/**/*.js",
+        "format": "prettier --write 'src/**/*.{js,jsx}'"
+    },
+    "dependencies": {
+        "express": "^4.18.2",
+        "cors": "^2.8.5",
+        "mongoose": "^7.5.0",
+        "yaml": "^2.3.1",
+        "joi": "^17.9.2",
+        "node-ansible": "^1.0.0",
+        "winston": "^3.10.0",
+        "dotenv": "^16.3.1",
+        "jsonwebtoken": "^9.0.1"
+    },
+    "devDependencies": {
+        "jest": "^29.6.4",
+        "nodemon": "^3.0.1",
+        "eslint": "^8.47.0",
+        "prettier": "^3.0.2",
+        "supertest": "^6.3.3"
+    },
+    "engines": {
+        "node": ">=16.0.0"
+    }
+}
