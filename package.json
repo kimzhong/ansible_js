@@ -8,7 +8,12 @@
         "dev": "nodemon src/index.js",
         "test": "jest",
         "lint": "eslint src/**/*.js",
-        "format": "prettier --write 'src/**/*.{js,jsx}'"
+        "format": "prettier --write 'src/**/*.{js,jsx}'",
+        "docker:build": "docker-compose build",
+        "docker:start": "docker-compose up",
+        "docker:test": "docker-compose run test",
+        "docker:down": "docker-compose down",
+        "docker:clean": "docker-compose down -v --remove-orphans"
     },
     "dependencies": {
         "express": "^4.18.2",

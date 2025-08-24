@@ -13,6 +13,18 @@
 - API文档：Swagger/OpenAPI
 - 测试框架：Jest
 - Ansible集成：node-ansible
+- 容器化：Docker & Docker Compose
+
+### 2.1.1 Docker 环境配置
+- 应用容器 (Node.js + Ansible)
+  - 开发环境：热重载支持
+  - 生产环境：优化性能配置
+- 数据库容器 (MongoDB)
+  - 数据持久化
+  - 环境隔离
+- 测试容器
+  - 独立测试环境
+  - 自动化测试执行
 
 ### 2.2 系统组件
 1. Web界面层

@@ -1,0 +1,24 @@
+FROM node:18-slim
+
+# 安装 Ansible 和其他必要工具
+RUN apt-get update && apt-get install -y \
+    python3 \
+    python3-pip \
+    ssh \
+    && pip3 install ansible \
+    && rm -rf /var/lib/apt/lists/*
+
+# 创建应用目录
+WORKDIR /usr/src/app
+
+# 复制 package.json 和 package-lock.json
+COPY package*.json ./
+
+# 安装依赖
+RUN npm install
+
+# 复制应用代码
+COPY . .
+
+# 运行测试
+CMD ["npm", "test"]
